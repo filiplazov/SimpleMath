@@ -14,7 +14,7 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 - [x] Display a simple cheerful animation if all problems are solved correctly.
 
 <p align="center">
-    <img src="Images/Logo.png" width="400" max-width="90%" alt="SimpleMath" />
+    <img src="Images/Recording.gif" width="400" max-width="90%" alt="SimpleMath" />
 </p>
 
 ## Todo
