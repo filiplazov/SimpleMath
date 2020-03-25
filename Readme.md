@@ -23,6 +23,7 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 - [ ] Results sheet can be dismissed by dragging, I need to investigate a clean way to solve this issue.
 - [ ] Add app icon.
 - [ ] Unit tests.
+- [ ] CI using git actions.
 - [ ] Swiftlint support.
 - [ ] Customize equation count & digit limit. 
 - [ ] Ability to toggle sounds.
