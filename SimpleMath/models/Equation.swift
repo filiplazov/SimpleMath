@@ -50,7 +50,7 @@ struct Equation {
   
   mutating func erase() {
     guard case let .answer(current) = answer else { return }
-    answer = current > 10 ? .answer(current / 10) : .noAnswer
+    answer = current > 9 ? .answer(current / 10) : .noAnswer
   }
   
   mutating func evaluate() {
