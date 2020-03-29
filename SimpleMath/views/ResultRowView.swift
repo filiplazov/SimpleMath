@@ -5,6 +5,7 @@
 import SwiftUI
 
 struct ResultRowView: View {
+  @Environment(\.horizontalSizeClass) private var hSizeClass
   let equation: Equation
   
   var body: some View {
@@ -19,6 +20,6 @@ struct ResultRowView: View {
           .foregroundColor(Color(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)))
       }
     }
-    .font(Font.system(size: 34, weight: .heavy, design: .monospaced))
+    .font(Font.system(size: self.hSizeClass.isRegular ? 34 : 26, weight: .heavy, design: .monospaced))
   }
 }
