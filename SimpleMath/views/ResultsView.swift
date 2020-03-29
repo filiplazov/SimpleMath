@@ -10,6 +10,9 @@ struct ResultsView: View {
   
   var body: some View {
     ZStack {
+      Color(#colorLiteral(red: 0.4739681945, green: 0.1025257594, blue: 0.4670193102, alpha: 1))
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+      .edgesIgnoringSafeArea(.all)
       VStack {
         ResultsHeaderView(correctAnswers: viewModel.correctAnswers, wrongAnswers: viewModel.wrongAnswers)
         HStack {
@@ -23,8 +26,6 @@ struct ResultsView: View {
         Spacer()
       }
       .padding(.all, 30)
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-      .background(Color(#colorLiteral(red: 0.4739681945, green: 0.1025257594, blue: 0.4670193102, alpha: 1)))
       TopTrailingHStack {
         ResetButton(action: self.viewModel.reset)
       }
