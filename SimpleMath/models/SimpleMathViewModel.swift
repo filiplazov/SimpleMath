@@ -17,7 +17,7 @@ final class SimpleMathViewModel: ObservableObject {
   @Published private(set) var progress = 0.0
   @Published private(set) var finished = false
   @Published private(set) var greatSuccess = false
-  var wrongAnswers: Int { defaultEquationCount - correctAnswers }
+  var wrongAnswers: Int { equations.count - correctAnswers }
 
   init() {
     generator = EquationGenerator(count: defaultEquationCount, upperLimit: upperLimit)
