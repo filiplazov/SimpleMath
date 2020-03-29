@@ -33,8 +33,10 @@
 		E85955D424292185003BDC57 /* CornerStacks in Frameworks */ = {isa = PBXBuildFile; productRef = E85955D324292185003BDC57 /* CornerStacks */; };
 		E85955D624292987003BDC57 /* EquationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85955D524292987003BDC57 /* EquationGenerator.swift */; };
 		E85955D8242930F6003BDC57 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85955D7242930F6003BDC57 /* Operator.swift */; };
-		E88A1E24242C05830025F17F /* HostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88A1E23242C05830025F17F /* HostingViewController.swift */; };
 		E88A1E26242C06020025F17F /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E88A1E25242C06020025F17F /* Readme.md */; };
+		E8D5F0472431286700DAE25B /* HostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5F0462431286700DAE25B /* HostingViewController.swift */; };
+		E8D5F04A2431293E00DAE25B /* View+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5F0492431293E00DAE25B /* View+Debug.swift */; };
+		E8D5F04C2431298B00DAE25B /* Optional+UserInterfaceSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5F04B2431298B00DAE25B /* Optional+UserInterfaceSizeClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +67,10 @@
 		E83D5E0B24264F3800348198 /* Equation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
 		E85955D524292987003BDC57 /* EquationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationGenerator.swift; sourceTree = "<group>"; };
 		E85955D7242930F6003BDC57 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
-		E88A1E23242C05830025F17F /* HostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingViewController.swift; sourceTree = "<group>"; };
 		E88A1E25242C06020025F17F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		E8D5F0462431286700DAE25B /* HostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostingViewController.swift; sourceTree = "<group>"; };
+		E8D5F0492431293E00DAE25B /* View+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Debug.swift"; sourceTree = "<group>"; };
+		E8D5F04B2431298B00DAE25B /* Optional+UserInterfaceSizeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+UserInterfaceSizeClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		E83D5DE424252B2400348198 /* SimpleMath */ = {
 			isa = PBXGroup;
 			children = (
+				E8D5F0482431292D00DAE25B /* extensions */,
 				E83D5E0824264E2200348198 /* views */,
 				E83D5E0724264E0500348198 /* models */,
 				E83D5E012426171100348198 /* sounds */,
@@ -143,7 +148,7 @@
 				E816109B2427775B00C699AA /* CorrectAnswersView.swift */,
 				E8161099242776D700C699AA /* EquationsView.swift */,
 				E816108F24274F1D00C699AA /* GreatSuccessOverlayView.swift */,
-				E88A1E23242C05830025F17F /* HostingViewController.swift */,
+				E8D5F0462431286700DAE25B /* HostingViewController.swift */,
 				E8161097242776A900C699AA /* InputView.swift */,
 				E8161091242750B100C699AA /* NumbersInputView.swift */,
 				E81610AB2427986100C699AA /* ProgressView.swift */,
@@ -154,6 +159,15 @@
 				E816109324275AF200C699AA /* Symbol.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		E8D5F0482431292D00DAE25B /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8D5F0492431293E00DAE25B /* View+Debug.swift */,
+				E8D5F04B2431298B00DAE25B /* Optional+UserInterfaceSizeClass.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D5F04A2431293E00DAE25B /* View+Debug.swift in Sources */,
 				E83D5DFF2425719100348198 /* SimpleMathViewModel.swift in Sources */,
 				E81610A0242777F200C699AA /* ResetButton.swift in Sources */,
 				E816109424275AF200C699AA /* Symbol.swift in Sources */,
@@ -246,6 +261,7 @@
 				E81610962427765D00C699AA /* CommandInputButton.swift in Sources */,
 				E81610AC2427986100C699AA /* ProgressView.swift in Sources */,
 				E83D5E032426176A00348198 /* AudioPlayer.swift in Sources */,
+				E8D5F0472431286700DAE25B /* HostingViewController.swift in Sources */,
 				E85955D624292987003BDC57 /* EquationGenerator.swift in Sources */,
 				E81610A22427785000C699AA /* ResultsHeaderView.swift in Sources */,
 				E8161092242750B100C699AA /* NumbersInputView.swift in Sources */,
@@ -255,8 +271,8 @@
 				E816109E242777B600C699AA /* ResultsView.swift in Sources */,
 				E85955D8242930F6003BDC57 /* Operator.swift in Sources */,
 				E83D5DEA24252B2400348198 /* ContentView.swift in Sources */,
+				E8D5F04C2431298B00DAE25B /* Optional+UserInterfaceSizeClass.swift in Sources */,
 				E816109C2427775B00C699AA /* CorrectAnswersView.swift in Sources */,
-				E88A1E24242C05830025F17F /* HostingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleMath/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FFS59S64P7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SimpleMath/Info.plist;
@@ -404,7 +420,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.filiplazov.SimpleMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -413,7 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleMath/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FFS59S64P7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SimpleMath/Info.plist;
@@ -424,7 +440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.filiplazov.SimpleMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
