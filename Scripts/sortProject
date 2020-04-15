@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Usage ./sortProject
+
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+perl "$SCRIPT_DIR"/sortProject.pl "$SCRIPT_DIR"/../SimpleMath.xcodeproj
