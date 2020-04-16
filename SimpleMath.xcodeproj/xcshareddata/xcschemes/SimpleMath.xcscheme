@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E83D5DE124252B2400348198"
-               BuildableName = "SimpleMath.app"
+               BuildableName = "Simple Math.app"
                BlueprintName = "SimpleMath"
                ReferencedContainer = "container:SimpleMath.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E83D5DE124252B2400348198"
-            BuildableName = "SimpleMath.app"
+            BuildableName = "Simple Math.app"
             BlueprintName = "SimpleMath"
             ReferencedContainer = "container:SimpleMath.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E83D5DE124252B2400348198"
-            BuildableName = "SimpleMath.app"
+            BuildableName = "Simple Math.app"
             BlueprintName = "SimpleMath"
             ReferencedContainer = "container:SimpleMath.xcodeproj">
          </BuildableReference>

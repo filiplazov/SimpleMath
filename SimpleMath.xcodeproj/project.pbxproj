@@ -800,6 +800,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
+				PRODUCT_MODULE_NAME = SimpleMath;
 				PRODUCT_NAME = "Simple Math";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -823,6 +824,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
+				PRODUCT_MODULE_NAME = SimpleMath;
 				PRODUCT_NAME = "Simple Math";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -847,7 +849,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMath.app/SimpleMath";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Math.app/Simple Math";
 			};
 			name = Debug;
 		};
@@ -868,7 +870,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMath.app/SimpleMath";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Math.app/Simple Math";
 			};
 			name = Release;
 		};
