@@ -20,7 +20,7 @@ final class App {
   }
   
   func startApp() {
-    
+    print("App version: \(App.version)")
     let contentView = ContentView()
       .environmentObject(SimpleMathViewModel(settings: settings))
       .environmentObject(SettingsViewModel(settings: settings))

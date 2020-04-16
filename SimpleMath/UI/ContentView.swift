@@ -71,6 +71,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+  static let storageMock = StorageMock(settingsBundle: .default, onboardingBundle: .default)
   static let settingsMock: Settings = {
     let settings = SettingsMock()
     var bundle = SettingsBundle.default
@@ -99,13 +100,15 @@ struct ContentView_Previews: PreviewProvider {
     return vm
   }()
   
+  static let onboarding = Onboarding(withStorage: storageMock)
+  
   static var previews: some View {
     Group {
-      ContentView()
-        .environmentObject(finishedViewModel)
-        .previewDevice(PreviewDevice(rawValue: "iPad Air (3rd generation)"))
-        .previewDisplayName("iPad Air (3rd generation)")
-        .environment(\.horizontalSizeClass, .regular)
+//      ContentView()
+//        .environmentObject(finishedViewModel)
+//        .previewDevice(PreviewDevice(rawValue: "iPad Air (3rd generation)"))
+//        .previewDisplayName("iPad Air (3rd generation)")
+//        .environment(\.horizontalSizeClass, .regular)
 //
 //      ContentView()
 //        .environmentObject(SimpleMathViewModel(settings: Self.settingsMock))
@@ -114,6 +117,8 @@ struct ContentView_Previews: PreviewProvider {
       
       ContentView()
         .environmentObject(SimpleMathViewModel(settings: settingsMock))
+        .environmentObject(onboarding)
+        .environmentObject(SettingsViewModel(settings: settingsMock))
         .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         .previewDisplayName("iPhone 8")
       
