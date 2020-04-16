@@ -107,7 +107,7 @@
 		E81610A12427785000C699AA /* ResultsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsHeaderView.swift; sourceTree = "<group>"; };
 		E81610AB2427986100C699AA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E81610AD2427BDBF00C699AA /* great-success.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "great-success.m4a"; sourceTree = "<group>"; };
-		E83D5DE224252B2400348198 /* SimpleMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E83D5DE224252B2400348198 /* Simple Math.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Math.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83D5DE524252B2400348198 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E83D5DE724252B2400348198 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E83D5DE924252B2400348198 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		E83D5DE324252B2400348198 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E83D5DE224252B2400348198 /* SimpleMath.app */,
+				E83D5DE224252B2400348198 /* Simple Math.app */,
 				E8FEF39E2441DC260033AA3B /* SimpleMathTests.xctest */,
 			);
 			name = Products;
@@ -459,7 +459,7 @@
 				E85955D324292185003BDC57 /* CornerStacks */,
 			);
 			productName = SimpleMath;
-			productReference = E83D5DE224252B2400348198 /* SimpleMath.app */;
+			productReference = E83D5DE224252B2400348198 /* Simple Math.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E8FEF39D2441DC260033AA3B /* SimpleMathTests */ = {
@@ -798,7 +798,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Simple Math";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -818,7 +818,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Simple Math";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
