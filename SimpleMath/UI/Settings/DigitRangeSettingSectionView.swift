@@ -6,6 +6,7 @@ import SwiftUI
 
 struct DigitRangeSettingSectionView: View {
   @EnvironmentObject private var viewModel: SettingsViewModel
+  @Environment(\.horizontalSizeClass) private var hSizeClass
   
   var body: some View {
     VStack(spacing: 8) {
@@ -20,13 +21,13 @@ struct DigitRangeSettingSectionView: View {
           .modifier(DigitTextField(isValid: viewModel.isRangeValid))
         Spacer()
         Image(withSymbol: .leftArrow)
-          .font(.system(size: 20, weight: .bold, design: .monospaced))
+          .font(.system(size: hSizeClass.isRegular ? 26 : 20, weight: .bold, design: .monospaced))
         Spacer()
         Text("X")
-          .font(.system(size: 20, weight: .heavy, design: .monospaced))
+          .font(.system(size: hSizeClass.isRegular ? 28 : 20, weight: .heavy, design: .monospaced))
         Spacer()
         Image(withSymbol: .rightArrow)
-          .font(.system(size: 20, weight: .bold, design: .monospaced))
+          .font(.system(size: hSizeClass.isRegular ? 26 : 20, weight: .bold, design: .monospaced))
         Spacer()
         TextField(
           "", text: Binding<String>(
@@ -38,14 +39,14 @@ struct DigitRangeSettingSectionView: View {
       }
       
       HStack {
-        Text("X + X =")
+        Text("X + X = ")
         Text("  ")
-          .frame(width:40)
+          .frame(width: hSizeClass.isRegular ? 54 : 40)
           .background(Color.unanswered)
           .clipShape(Capsule())
         
       }
-      .font(.system(size: 16, weight: .bold, design: .monospaced))
+      .font(.system(size: hSizeClass.isRegular ? 24 :  16, weight: .bold, design: .monospaced))
       .opacity(0.6)
     }
     .animation(nil)
@@ -55,14 +56,15 @@ struct DigitRangeSettingSectionView: View {
 }
 
 private struct DigitTextField: ViewModifier {
+  @Environment(\.horizontalSizeClass) private var hSizeClass
   var isValid: Bool
   
   func body(content: Content) -> some View {
     content
       .multilineTextAlignment(.center)
       .keyboardType(.numberPad)
-      .font(.system(size: 30))
-      .frame(width: 60, alignment: .center)
+      .font(.system(size: hSizeClass.isRegular ? 40 : 30))
+      .frame(width: hSizeClass.isRegular ? 80 : 60, alignment: .center)
       .background(
         RoundedRectangle(cornerRadius: 8, style: .continuous)
           .stroke(lineWidth: 2)

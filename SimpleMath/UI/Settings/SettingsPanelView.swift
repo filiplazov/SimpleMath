@@ -8,7 +8,7 @@ struct SettingsPanelView: View {
   @EnvironmentObject private var viewModel: SettingsViewModel
   @Environment(\.horizontalSizeClass) private var hSizeClass
   private let cellSpacing: CGFloat = 12
-  private var width: CGFloat { hSizeClass.isRegular ? 640 : CGFloat.screenWidth - 48 }
+  private var width: CGFloat { hSizeClass.isRegular ? 740 : CGFloat.screenWidth - 48 }
   private var height: CGFloat? {  hSizeClass.isRegular ? nil : 380 + (CGFloat.screenHeight > 568 ? 104 : 0)}
   @Binding var show: Bool
 
