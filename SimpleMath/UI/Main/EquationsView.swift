@@ -77,10 +77,19 @@ struct EquationsView: View {
   
   private var answerSlotWidth: CGFloat {
     switch viewModel.answerDigitCount {
-    case 2: return hSizeClass.isRegular ? 130 : 86
-    case 3: return hSizeClass.isRegular ? 156 : 90
-    case 4: return hSizeClass.isRegular ? 180 : 100
-    default: return hSizeClass.isRegular ? 130 : 100
+    case 2: return hSizeClass.isRegular ? iPadSlotSize : 86
+    case 3: return hSizeClass.isRegular ? iPadSlotSize : 90
+    case 4: return hSizeClass.isRegular ? iPadSlotSize : 100
+    default: return hSizeClass.isRegular ? iPadSlotSize : 100
+    }
+  }
+  
+  private var iPadSlotSize: CGFloat {
+    switch viewModel.answerDigitCount {
+    case 2: return CGFloat.screenWidth >= 1024 ? 160 : 130
+    case 3: return CGFloat.screenWidth >= 1024 ? 196 : 156
+    case 4: return CGFloat.screenWidth >= 1024 ? 220 : 180
+    default: return CGFloat.screenWidth >= 1024 ? 150 : 130
     }
   }
 }
