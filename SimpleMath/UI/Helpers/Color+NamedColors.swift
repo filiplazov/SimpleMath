@@ -30,3 +30,8 @@ extension Color {
   static let settingEquationDisabled = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
   static let settingStepperBackground = Color(#colorLiteral(red: 0.2286085633, green: 0.2460217858, blue: 0.2703869619, alpha: 1))
 }
+
+//this is temporary, should move all colors to assets soon
+extension UIColor {
+  static let primaryText = UIColor.white
+}

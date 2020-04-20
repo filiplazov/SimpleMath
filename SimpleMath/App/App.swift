@@ -28,6 +28,7 @@ final class App {
     
     let controller = HostingController(rootView: contentView)
     window?.rootViewController = controller
+    UITextField.appearance().tintColor = .primaryText
     
     gesture = AnyGestureRecognizer(target: window, action:#selector(UIView.endEditing))
     gesture?.requiresExclusiveTouchType = false
