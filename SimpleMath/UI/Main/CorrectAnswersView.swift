@@ -21,6 +21,7 @@ struct CorrectAnswersView: View {
         }
       }
     }
+    .animation(nil)
   }
 }
 
