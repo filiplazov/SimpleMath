@@ -6,12 +6,18 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 
 ## Features
 
-- [x] Generate addition and subtraction equations.
+- [x] Generate addition, subtraction, multiplication and division equations.
 - [x] Record results and provide visual and audio feedback.
 - [x] Show progress of completed equations as well as correct answers.
-- [x] Display results after a completed session (10 equations at this time) with corrections on wrong answers.
+- [x] Display results after a completed session with corrections on wrong answers.
 - [x] An option to start a new session after finishing.
-- [x] Display a simple cheerful animation if all problems are solved correctly.
+- [x] Display a simple cheerful animation if all equations are solved correctly.
+- [x] Settings UI that allows customization of:
+    - [x] Operand digit input range.
+    - [x] Number of generated equations (minimum 5, maximum 30).
+    - [x] Endable / disable equation types: addition, subtraction, multiplication, division.
+    - [x] Toggle sounds.
+- [x] Scaling fonts and UI for all supported iOS13+ devices.
 
 <p align="center">
     <img src="Images/Recording.gif" width="400" max-width="90%" alt="SimpleMath" />
@@ -19,31 +25,36 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 
 ## Todo
 
-- [ ] The ui is made specifically for iPad 9.7 screen, allow support for multiple screen sizes and orientations.
-- [ ] Results sheet can be dismissed by dragging, I need to investigate a clean way to solve this issue.
-- [ ] Add app icon.
-- [ ] Unit tests.
-- [ ] CI using git actions.
-- [ ] Swiftlint support.
-- [ ] Customize equation count & digit limit. 
-- [ ] Ability to toggle sounds.
-- [ ] Customize colors (it is very purple now, my target audience demanded it!).
-- [ ] Multiplication and division.
-- [ ] Flexible equation layout, ex `1 + _ = 3`.
+- [ ] Add CI support.
+- [ ] Add Swiftlint support.
+- [ ] Add light / dark mode support.
+- [ ] Customize colors / themes (it is very purple now, my target audience demanded it!).
+- [ ] Support landscape layout.
 - [ ] Adaptive sessions, use wrong answers from previous sessions, repetition is key!
-- [ ] More gamification, with sounds and visual effects on streaks.
-- [ ] Hints when tapping already completed wrong answers.
+- [ ] More gamification, with sounds and visual effects, simple achievement system.
+- [ ] Helpful hints when tapping on current equation.
+- [ ] Flexible equation layout, ex `1 + _ = 3`.
 - [ ] Whatever my target audience demands!
 
-## Is the app available on App Store?
+## Is this app available on the App Store?
 
-No, at least not yet. As I mentioned in the todos, this app is "hard-coded" to work with iPad 9.7 inch screen and only in portrait mode which will make many unable to use it. Perhaps after that is resolved and some other items on the todo I will publish it as a free app on the app store. Everyone is welcome to download and build to device.
+Yes, click on the link below.
+
+<p align="center">
+  <a href="https://apps.apple.com/us/app/simple-math-learn-by-solving/id1508285174?ls=1">
+    <img src="Images/appstore.png" width="400" max-width="90%" alt="App Store" />
+  </a>
+</p>
+
+## What about Android?
+
+At this time I have no plans to support Android, but you are more than welcome to implement an Android version yourself.
 
 ## Requirements
 
-- iOS 13.0+
-- Xcode 11.0+
-- Swift 5.1+
+- iOS 13.2+
+- Xcode 11.4+
+- Swift 5.2+
 
 ## Author
 * [Filip Lazov](https://github.com/filiplazov) ([@filiplazov](https://twitter.com/filiplazov))
@@ -53,6 +64,7 @@ SimpleMath was inspired by the following projects:
 
 * [SwiftUI Live: Building an app from scratch](https://www.youtube.com/watch?v=FE4ys3tW1VI) by [Paul Hudson](https://twitter.com/twostraws)
 * [Build a SwiftUI App for iOS13](https://designcode.io/swiftui?promo=learnswiftui) by [Meng To](https://twitter.com/MengTo) (Design+code)
+* [Thinking in SwiftUI](https://www.objc.io/books/thinking-in-swiftui/) A book by [Chris Eidhof](https://twitter.com/chriseidhof) and [Florian Kugler](https://twitter.com/floriankugler)
 
 ## License
 
