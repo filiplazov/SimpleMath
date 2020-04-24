@@ -40,6 +40,7 @@
 		E85E7C9D243882F20049438E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E7C9C243882F20049438E /* SettingsViewModel.swift */; };
 		E85E7CA42438E17B0049438E /* MiniDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E7CA32438E17B0049438E /* MiniDeviceView.swift */; };
 		E88A1E26242C06020025F17F /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E88A1E25242C06020025F17F /* Readme.md */; };
+		E8A8CD5424534B0300428B39 /* Assign+WeakCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A8CD5324534B0300428B39 /* Assign+WeakCapture.swift */; };
 		E8AF251D243B27F000A5DBD9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF251C243B27F000A5DBD9 /* Settings.swift */; };
 		E8AF251F243B2CEA00A5DBD9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF251E243B2CEA00A5DBD9 /* App.swift */; };
 		E8AF2523243C754200A5DBD9 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF2522243C754200A5DBD9 /* SettingsPanelView.swift */; };
@@ -129,6 +130,7 @@
 		E85E7C9C243882F20049438E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E85E7CA32438E17B0049438E /* MiniDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDeviceView.swift; sourceTree = "<group>"; };
 		E88A1E25242C06020025F17F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		E8A8CD5324534B0300428B39 /* Assign+WeakCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assign+WeakCapture.swift"; sourceTree = "<group>"; };
 		E8AF251C243B27F000A5DBD9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E8AF251E243B2CEA00A5DBD9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E8AF2522243C754200A5DBD9 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				E8B603F42445920400F5E499 /* AnyPublisher+Just.swift */,
+				E8A8CD5324534B0300428B39 /* Assign+WeakCapture.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				E8B603F52445920400F5E499 /* AnyPublisher+Just.swift in Sources */,
 				E8AF251F243B2CEA00A5DBD9 /* App.swift in Sources */,
 				E83D5DE624252B2400348198 /* AppDelegate.swift in Sources */,
+				E8A8CD5424534B0300428B39 /* Assign+WeakCapture.swift in Sources */,
 				E8FEF38B2441BBA60033AA3B /* AudioEngine.swift in Sources */,
 				E8FEF3912441CF3D0033AA3B /* AudioEngineMock.swift in Sources */,
 				E83D5E032426176A00348198 /* AudioPlayer.swift in Sources */,
