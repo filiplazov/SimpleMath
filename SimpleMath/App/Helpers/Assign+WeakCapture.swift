@@ -4,7 +4,8 @@
 
 import Combine
 
-// This is a workaround to avoid strong self capturing (and causing retain cycle) when using assign on self and storing subcription in self
+// This is a workaround to avoid strong self capturing (and causing retain cycle) when using assign on self
+// and storing subscription in self
 // https://forums.swift.org/t/does-assign-to-produce-memory-leaks/29546
 
 extension Publisher where Failure == Never {

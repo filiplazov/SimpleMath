@@ -8,33 +8,33 @@ final class UserDefaultsStorage: Storage {
   private var storedDataCache: StoredData?
   let modelVersion: String
   let key: String
-  
+
   init(withKey: String, modelVersion: String) {
     key = withKey
     self.modelVersion = modelVersion
   }
-  
+
   func store(settingsBundle: SettingsBundle) {
     var data = loadStoredData()
     data.settingsBundle = settingsBundle
     save(storedData: data)
-    
+
   }
-  
+
   func loadSettingsBundle() -> SettingsBundle {
     loadStoredData().settingsBundle
   }
-  
+
   func store(onboardingBundle: OnboardingBundle) {
     var data = loadStoredData()
     data.onboardingBundle = onboardingBundle
     save(storedData: data)
   }
-  
+
   func loadOnboardingBundle() -> OnboardingBundle {
     loadStoredData().onboardingBundle
   }
-  
+
   private func loadStoredData() -> StoredData {
     if let cache = storedDataCache {
       return cache
@@ -57,7 +57,7 @@ final class UserDefaultsStorage: Storage {
       return storedData
     }
   }
-  
+
   private func save(storedData: StoredData) {
     storedDataCache = storedData
     do {

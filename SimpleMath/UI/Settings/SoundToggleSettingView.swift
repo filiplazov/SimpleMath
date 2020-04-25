@@ -7,7 +7,7 @@ import SwiftUI
 struct SoundToggleSettingView: View {
   @EnvironmentObject private var viewModel: SettingsViewModel
   @Environment(\.horizontalSizeClass) private var hSizeClass
-  
+
   var body: some View {
     HStack {
       Image(withSymbol: viewModel.areSoundsEnabled ? .soundsEnabled : .soundsDisabled)

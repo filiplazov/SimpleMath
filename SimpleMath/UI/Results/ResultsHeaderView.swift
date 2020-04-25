@@ -7,7 +7,7 @@ import SwiftUI
 struct ResultsHeaderView: View {
   let correctAnswers: Int
   let wrongAnswers: Int
-  
+
   var body: some View {
     HStack {
       Text(correctAnswers.description)

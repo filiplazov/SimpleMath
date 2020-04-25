@@ -6,7 +6,7 @@ struct Operator {
   let equationType: EquationType
   let symbol: String
   let function: (Int, Int) -> Int
-  
+
   func callAsFunction(_ left: Int, _ right: Int) -> Int {
    function(left, right)
   }

@@ -5,5 +5,3 @@
 protocol EquationsFactory {
   func makeEquations(usingSettings: EquationSettings) -> GeneratedResult
 }
-
-

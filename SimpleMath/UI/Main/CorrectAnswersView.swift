@@ -8,7 +8,7 @@ import SwiftUI
 struct CorrectAnswersView: View {
   @Environment(\.horizontalSizeClass) private var hSizeClass
   let correctAnswers: Int
-  
+
   var body: some View {
     Group {
       if hSizeClass.isRegular {
@@ -28,7 +28,7 @@ struct CorrectAnswersView: View {
 private struct InnerContent: View {
   let correctAnswers: Int
   let bigSize: Bool
-  
+
   var body: some View {
     Group {
       Text(correctAnswers.description)
@@ -45,7 +45,7 @@ private extension Font {
   static func commandFont(for proxy: GeometryProxy, horizontalSizeClass: UserInterfaceSizeClass?) -> Font {
     Font.system(size: proxy.size.width * 0.08, weight: .heavy, design: .monospaced)
   }
-  
+
   static func numbersFont(for proxy: GeometryProxy, horizontalSizeClass: UserInterfaceSizeClass?) -> Font {
     let scale: CGFloat = horizontalSizeClass == .regular ? 0.11 : 0.15
     return Font.system(size: proxy.size.width * scale, weight: .heavy, design: .monospaced)

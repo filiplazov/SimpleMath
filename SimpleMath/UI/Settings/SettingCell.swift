@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SettingCell: ViewModifier {
   var maxWidth: CGFloat
-  
+
   func body(content: Content) -> some View {
     content
       .frame(maxWidth: maxWidth)

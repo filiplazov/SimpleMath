@@ -13,7 +13,7 @@ struct ProgressView: View {
   private let pulse: Bool
   private let action: () -> Void
   @State private var pulseFactor: CGFloat = 0
-  
+
   init(width: CGFloat, progress: Double, play: Bool, pulse: Bool, action: @escaping () -> Void) {
     self.width = width
     self.progress = progress
@@ -24,7 +24,7 @@ struct ProgressView: View {
     circleSize = width / ( 1 + strokeScale)
     strokeWidth = circleSize * strokeScale
   }
-  
+
   var body: some View {
     ZStack {
       Circle()
@@ -36,13 +36,13 @@ struct ProgressView: View {
         .stroke(lineWidth: strokeWidth)
         .rotationEffect(.degrees(90))
         .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
-        
+
         .frame(width: circleSize, height: circleSize)
         .foregroundColor(Color.progressComplete.opacity(0.7))
       PlayPauseView(play: play, width: width * 0.5)
         .foregroundColor(.playPause)
     }
-      
+
     .frame(width: width, height: width)
     .anchorPreference(key: BoundsAnchorKey.self, value: .bounds, transform: { $0 })
     .backgroundPreferenceValue(BoundsAnchorKey.self) { anchor in
@@ -67,5 +67,3 @@ struct ProgressView: View {
     }
   }
 }
-
-

@@ -8,7 +8,7 @@ extension Optional where Wrapped == UserInterfaceSizeClass {
   var isRegular: Bool {
     self == .regular
   }
-  
+
   var isCompact: Bool {
     self == .compact
   }

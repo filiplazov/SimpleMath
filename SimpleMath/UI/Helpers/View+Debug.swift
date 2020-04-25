@@ -15,15 +15,15 @@ extension View {
   func greenBorder() -> some View {
     self.border(Color.green)
   }
-  
+
   func blackBackground() -> some View {
     self.background(Color.black)
   }
-  
+
   func redBackground() -> some View {
     self.background(Color.red)
   }
-  
+
   func greenBackground() -> some View {
     self.background(Color.green)
   }
@@ -32,9 +32,9 @@ extension View {
 // Credit: Geek & Dad,
 // https://geekanddad.wordpress.com/2020/02/13/swiftui-tiny-bits-little-view-extension-to-log-to-the-console/
 extension View {
-  func printMessage(_ msg: Any..., separator: String = " ", terminator: String = "\n") -> some View {
-      for m in msg {
-        print(m, separator, terminator: "")
+  func printMessage(_ messages: Any..., separator: String = " ", terminator: String = "\n") -> some View {
+      for msg in messages {
+        print(msg, separator, terminator: "")
       }
       print()
       return self
@@ -52,4 +52,3 @@ extension View {
   }
 }
 #endif
-

@@ -24,7 +24,7 @@ struct SettingsPanelView: View {
             self.show = false
           }
         })
-      
+
       if hSizeClass.isRegular {
         HStack(alignment: .top, spacing: cellSpacing) {
           VStack(spacing: cellSpacing) {
@@ -61,7 +61,7 @@ private struct SettingPanel: ViewModifier {
   var isVisible: Bool
   var maxWidth: CGFloat
   var maxHeight: CGFloat?
-  
+
   func body(content: Content) -> some View {
     content
       .foregroundColor(.primaryText)
@@ -71,7 +71,3 @@ private struct SettingPanel: ViewModifier {
       .opacity(isVisible ? 1: 0)
   }
 }
-
-
-
-

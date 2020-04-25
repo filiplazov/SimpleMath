@@ -7,7 +7,7 @@ import SwiftUI
 struct ResetButton: View {
   @Environment(\.horizontalSizeClass) private var hSizeClass
   let action: () -> Void
-  
+
   var body: some View {
     Button(action: action) {
       Image(withSymbol: .reset)

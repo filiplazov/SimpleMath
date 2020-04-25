@@ -9,7 +9,7 @@ struct ResultsView: View {
   @Environment(\.horizontalSizeClass) private var hSizeClass
   @EnvironmentObject private var viewModel: SimpleMathViewModel
   @EnvironmentObject private var presentation: ModalPesentation
-  
+
   var body: some View {
     ZStack {
       Color.background

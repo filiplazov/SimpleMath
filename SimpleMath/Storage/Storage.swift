@@ -10,5 +10,3 @@ protocol Storage: AnyObject {
   func store(onboardingBundle: OnboardingBundle)
   func loadOnboardingBundle() -> OnboardingBundle
 }
-
-

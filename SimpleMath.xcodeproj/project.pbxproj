@@ -41,6 +41,7 @@
 		E85E7CA42438E17B0049438E /* MiniDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E7CA32438E17B0049438E /* MiniDeviceView.swift */; };
 		E88A1E26242C06020025F17F /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E88A1E25242C06020025F17F /* Readme.md */; };
 		E8A8CD5424534B0300428B39 /* Assign+WeakCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A8CD5324534B0300428B39 /* Assign+WeakCapture.swift */; };
+		E8A8CD582454145E00428B39 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E8A8CD572454145E00428B39 /* .swiftlint.yml */; };
 		E8AF251D243B27F000A5DBD9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF251C243B27F000A5DBD9 /* Settings.swift */; };
 		E8AF251F243B2CEA00A5DBD9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF251E243B2CEA00A5DBD9 /* App.swift */; };
 		E8AF2523243C754200A5DBD9 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF2522243C754200A5DBD9 /* SettingsPanelView.swift */; };
@@ -131,6 +132,7 @@
 		E85E7CA32438E17B0049438E /* MiniDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDeviceView.swift; sourceTree = "<group>"; };
 		E88A1E25242C06020025F17F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		E8A8CD5324534B0300428B39 /* Assign+WeakCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assign+WeakCapture.swift"; sourceTree = "<group>"; };
+		E8A8CD572454145E00428B39 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E8AF251C243B27F000A5DBD9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E8AF251E243B2CEA00A5DBD9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E8AF2522243C754200A5DBD9 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				E8FEF3AD244212BF0033AA3B /* App */,
 				E8FEF3B72442FF260033AA3B /* Helpers */,
 				E8FEF3AC2441F3EE0033AA3B /* Settings */,
+				E8A8CD572454145E00428B39 /* .swiftlint.yml */,
 				E8FEF3A22441DC260033AA3B /* Info.plist */,
 			);
 			path = SimpleMathTests;
@@ -452,6 +455,7 @@
 				E83D5DDF24252B2400348198 /* Frameworks */,
 				E83D5DE024252B2400348198 /* Resources */,
 				E8AF253A243CC83700A5DBD9 /* ShellScript */,
+				E8A8CD5524536E2100428B39 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -542,12 +546,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A8CD582454145E00428B39 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E8A8CD5524536E2100428B39 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		E8AF253A243CC83700A5DBD9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -793,7 +815,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FSMRVBHN9E;
 				ENABLE_PREVIEWS = YES;
@@ -802,7 +824,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
 				PRODUCT_MODULE_NAME = SimpleMath;
 				PRODUCT_NAME = "Simple Math";
@@ -817,7 +839,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FSMRVBHN9E;
 				ENABLE_PREVIEWS = YES;
@@ -826,7 +848,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.lazovdev.SimpleMath;
 				PRODUCT_MODULE_NAME = SimpleMath;
 				PRODUCT_NAME = "Simple Math";

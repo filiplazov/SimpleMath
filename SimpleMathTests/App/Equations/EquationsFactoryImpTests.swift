@@ -6,7 +6,7 @@
 import XCTest
 
 class EquationsFactoryImpTests: XCTestCase {
-  
+
   func testMakeEquations_resultingMaxOperandDigitsIsTheSameCountAsInMaximumDigitNumberOfDigitsInEquationSettings() {
     let factory = EquationsFactoryImp()
     let equationSettings = EquationSettings.standard.set(\.maximumDigit, to: 133)
@@ -17,7 +17,7 @@ class EquationsFactoryImpTests: XCTestCase {
       "Expected maxOperandDigits should be the digits count of the setting's maximumDigit, in this case 3 digits"
     )
   }
-  
+
   func testMakeEquations_ifMultiplicationIsOneOfTheEquationTypes_resultingMaxAnswerDigitsIsCorrectlyCalculated() {
     let factory = EquationsFactoryImp()
     var equationSettings = EquationSettings.standard
@@ -29,7 +29,7 @@ class EquationsFactoryImpTests: XCTestCase {
       1,
       "Expected maxAnswerDigits digits count in a resulting multiplication of the maximumDigit, 3 * 3 = 9, 9 has 1 digit"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 9)
       .set(\.equationTypes, to: [.addition, .subtraction, .multiplication, .division])
@@ -39,7 +39,7 @@ class EquationsFactoryImpTests: XCTestCase {
       2,
       "Expected maxAnswerDigits digits count in a resulting multiplication of the maximumDigit, 9 * 9 = 81, 81 has 2 digits"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 20)
       .set(\.equationTypes, to: [.addition, .subtraction, .multiplication, .division])
@@ -49,7 +49,7 @@ class EquationsFactoryImpTests: XCTestCase {
       3,
       "Expected maxAnswerDigits digits count in a resulting multiplication of the maximumDigit, 20 * 20 = 200, 200 has 3 digits"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 50)
       .set(\.equationTypes, to: [.addition, .subtraction, .multiplication, .division])
@@ -60,7 +60,7 @@ class EquationsFactoryImpTests: XCTestCase {
       "Expected maxAnswerDigits digits count in a resulting multiplication of the maximumDigit, 50 * 50 = 2500, 2500 has 4 digits"
     )
   }
-  
+
   func testMakeEquations_ifAdditionIsOneOfTheEquationTypesButNotMultiplication_resultingMaxAnswerDigitsIsCorrectlyCalculated() {
     let factory = EquationsFactoryImp()
     var equationSettings = EquationSettings.standard
@@ -72,7 +72,7 @@ class EquationsFactoryImpTests: XCTestCase {
       1,
       "Expected maxAnswerDigits digits count in a resulting addition of the maximumDigit, 4 + 4 = 8, 8 has 1 digit"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 9)
       .set(\.equationTypes, to: [.addition, .subtraction, .division])
@@ -82,7 +82,7 @@ class EquationsFactoryImpTests: XCTestCase {
       2,
       "Expected maxAnswerDigits digits count in a resulting addition of the maximumDigit, 9 + 9 = 18, 18 has 2 digits"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 50)
       .set(\.equationTypes, to: [.addition, .subtraction, .division])
@@ -93,7 +93,7 @@ class EquationsFactoryImpTests: XCTestCase {
       "Expected maxAnswerDigits digits count in a resulting addition of the maximumDigit, 50 + 50 = 100, 100 has 3 digits"
     )
   }
-  
+
   func testMakeEquations_ifAdditionOrMultiplicationIsNotOneOfTheEquationTypes_resultingMaxAnswerDigitsIsCorrectlyCalculated() {
     let factory = EquationsFactoryImp()
     var equationSettings = EquationSettings.standard
@@ -105,7 +105,7 @@ class EquationsFactoryImpTests: XCTestCase {
       1,
       "Expected maxAnswerDigits digits to be the same as the maximumDigit number of digits"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 10)
       .set(\.equationTypes, to: [.subtraction, .division])
@@ -115,7 +115,7 @@ class EquationsFactoryImpTests: XCTestCase {
       2,
       "Expected maxAnswerDigits digits to be the same as the maximumDigit number of digits"
     )
-    
+
     equationSettings = EquationSettings.standard
       .set(\.maximumDigit, to: 99)
       .set(\.equationTypes, to: [.subtraction, .division])
@@ -137,7 +137,7 @@ class EquationsFactoryImpTests: XCTestCase {
       "Expected nuumber of created equations should be the same count set in the equationSettings"
     )
   }
-  
+
   func testMakeEquations_producesEveryEquationTypeSpecifiedInTheEquationSettings() {
     let factory = EquationsFactoryImp()
     // all permutations
@@ -158,7 +158,7 @@ class EquationsFactoryImpTests: XCTestCase {
       )
     }
   }
-  
+
   func testMakeEquations_triesToProduceEqualAmountOfEquationsOfCertainType() {
     let factory = EquationsFactoryImp()
     let equationSettings = EquationSettings.standard
@@ -172,7 +172,7 @@ class EquationsFactoryImpTests: XCTestCase {
     XCTAssertEqual(types[.multiplication]?.count, 3, "expected 3 multiplication equations")
     XCTAssertEqual(types[.division]?.count, 3, "expected 3 division equations")
   }
-  
+
   func testMakeEquations_addition_RandomizedOperandsFallWithinExpectedValues() {
     let factory = EquationsFactoryImp()
     // larger sample of 50 equations to get more varriation
@@ -184,11 +184,11 @@ class EquationsFactoryImpTests: XCTestCase {
     let result = factory.makeEquations(usingSettings: equationSettings)
     let expectedRange = (equationSettings.minimumDigit...equationSettings.maximumDigit)
     XCTAssertTrue(
-      result.equations.allSatisfy{ expectedRange.contains($0.left) || expectedRange.contains($0.right) },
+      result.equations.allSatisfy { expectedRange.contains($0.left) || expectedRange.contains($0.right) },
       "All left and right operands should be within range of minimum and maximum digit"
     )
   }
-  
+
   func testMakeEquations_subtraction_RandomizedOperandsFallWithinExpectedValues() {
     let factory = EquationsFactoryImp()
     // larger sample of 50 equations to get more varriation
@@ -200,15 +200,15 @@ class EquationsFactoryImpTests: XCTestCase {
     let result = factory.makeEquations(usingSettings: equationSettings)
     let expectedLeftRange = (equationSettings.minimumDigit...equationSettings.maximumDigit)
     XCTAssertTrue(
-      result.equations.allSatisfy{ expectedLeftRange.contains($0.left) },
+      result.equations.allSatisfy { expectedLeftRange.contains($0.left) },
       "All left operands should be within range of minimum and maximum digit"
     )
     XCTAssertTrue(
-      result.equations.allSatisfy{ (equationSettings.minimumDigit...$0.left).contains($0.right) },
+      result.equations.allSatisfy { (equationSettings.minimumDigit...$0.left).contains($0.right) },
       "All right operands should be within range of minimum digit and the right operand"
     )
   }
-  
+
   func testMakeEquations_multiplication_RandomizedOperandsFallWithinExpectedValues() {
     let factory = EquationsFactoryImp()
     // larger sample of 50 equations to get more varriation
@@ -220,11 +220,11 @@ class EquationsFactoryImpTests: XCTestCase {
     let result = factory.makeEquations(usingSettings: equationSettings)
     let expectedRange = (equationSettings.minimumDigit...equationSettings.maximumDigit)
     XCTAssertTrue(
-      result.equations.allSatisfy{ expectedRange.contains($0.left) || expectedRange.contains($0.right) },
+      result.equations.allSatisfy { expectedRange.contains($0.left) || expectedRange.contains($0.right) },
       "All left and right operands should be within range of minimum and maximum digit"
     )
   }
-  
+
   func testMakeEquations_division_RandomizedOperandsFallWithinExpectedValues() {
     let factory = EquationsFactoryImp()
     // larger sample of 100 equations to get more varriation
@@ -236,11 +236,11 @@ class EquationsFactoryImpTests: XCTestCase {
     let result = factory.makeEquations(usingSettings: equationSettings)
     let expectedLeftRange = (equationSettings.minimumDigit...equationSettings.maximumDigit)
     XCTAssertTrue(
-      result.equations.allSatisfy{ expectedLeftRange.contains($0.left) },
+      result.equations.allSatisfy { expectedLeftRange.contains($0.left) },
       "All left operands should be within range of minimum and maximum digit"
     )
     XCTAssertTrue(
-      result.equations.allSatisfy{
+      result.equations.allSatisfy {
         $0.left == 0
           ? (equationSettings.minimumDigit + 1...equationSettings.maximumDigit).contains($0.right)
           : (equationSettings.minimumDigit + 1...$0.left).contains($0.right)
@@ -250,13 +250,13 @@ class EquationsFactoryImpTests: XCTestCase {
         Otherwise all right operands must be within range of minimum digit and left operand (but not 0)
       """
     )
-    XCTAssertTrue(result.equations.allSatisfy{ $0.left % $0.right == 0 }, "All division must be without remainder")
+    XCTAssertTrue(result.equations.allSatisfy { $0.left % $0.right == 0 }, "All division must be without remainder")
     XCTAssertTrue(
       result.equations.filter { $0.left.isPrime }.count < equationSettings.equationsCount / 2,
       "expected less exuations where left (dividend) is a prime number"
     )
   }
-  
+
 }
 
 private extension EquationSettings {

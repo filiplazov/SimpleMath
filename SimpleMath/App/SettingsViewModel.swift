@@ -19,12 +19,12 @@ final class SettingsViewModel: ObservableObject {
   @Published private(set) var multiplicationEnabled = false
   @Published private(set) var divisionEnabled = false
   @Published var areSoundsEnabled = true
-  
+
   init(settings: Settings) {
     self.settings = settings
     setupSubscriptions()
   }
-  
+
   private func setupSubscriptions() {
     settings?.currentSettings
       .sink(receiveValue: { [weak self] settingsBundle in
@@ -68,38 +68,38 @@ final class SettingsViewModel: ObservableObject {
       .assign(to: \.divisionEnabled, on: self)
       .store(in: &subscriptions)
   }
-  
+
   func updateMinRange(text: String) {
     minRange = Int(text).flatMap { number in number < 100 && number >= 0 ? number : minRange }
   }
-  
+
   func updateMaxRange(text: String) {
     maxRange = Int(text).flatMap { number in number < 100 && number >= 0 ? number : maxRange }
   }
-  
+
   func decreaseNumberOfEquations() {
     guard numberOfEquations > 5 else { return }
     numberOfEquations -= 1
   }
-  
+
   func increaseNumberOfEquations() {
     guard numberOfEquations < 30 else { return }
     numberOfEquations += 1
   }
-  
+
   func enableEquation(type: EquationType) {
     enabledEquationTypes.insert(type)
   }
-  
+
   func disableEquation(type: EquationType) {
     guard enabledEquationTypes.count > 1 && enabledEquationTypes.contains(type) else { return }
     enabledEquationTypes.remove(type)
   }
-  
+
   func updateSoundsEnabled(to areEnabled: Bool) {
     areSoundsEnabled = areEnabled
   }
-  
+
   func commitChanges() {
     guard let min = minRange, let max = maxRange else { return }
     let settingsBundle = SettingsBundle(

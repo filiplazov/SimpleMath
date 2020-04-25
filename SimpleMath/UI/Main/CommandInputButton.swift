@@ -9,7 +9,7 @@ struct CommandInputButton: View {
   let color: Color
   let action: () -> Void
   let isEnabled: Bool
-  
+
   var body: some View {
     Button(action: { withAnimation { self.action() } }, label: { Image(withSymbol: symbol) })
       .foregroundColor(color.opacity(isEnabled ? 1.0 : 0.2))

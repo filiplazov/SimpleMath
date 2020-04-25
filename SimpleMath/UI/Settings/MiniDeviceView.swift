@@ -21,7 +21,7 @@ struct MiniDeviceView: View {
   private var equationRowColor = Color.primaryText
   var width: CGFloat
   var animate: Bool
-  
+
   init(width: CGFloat, animate: Bool) {
     self.width = width
     self.animate = animate
@@ -41,13 +41,13 @@ struct MiniDeviceView: View {
     .drawingGroup()
     .frame(width: width, height: height)
   }
-  
+
   private func square(size: CGSize, color: Color) -> some View {
     Rectangle()
       .fill(color)
       .frame(width: size.width, height: size.height)
   }
-  
+
   private func squareRow(squareSize: CGSize, count: Int, color: Color) -> some View {
     HStack(spacing: width / 15 ) {
       ForEach(0..<count) { _ in
@@ -55,16 +55,16 @@ struct MiniDeviceView: View {
       }
     }
   }
-  
+
   private func inputMockup() -> some View {
     let squareSize = CGSize(width: width * 0.08, height: width * 0.08)
     return Group {
-      
+
       ForEach(0..<3) { index in
         self.squareRow(squareSize: squareSize, count: 3, color: self.inputMockupColor)
           .offset(x: 0, y: self.height * (0.12 + CGFloat(index) * 0.07))
       }
-      
+
       squareRow(squareSize: squareSize, count: 1, color: inputMockupColor)
         .offset(x: 0, y: height * 0.33)
       square(size: squareSize, color: inputMockupColor)
@@ -77,54 +77,56 @@ struct MiniDeviceView: View {
         .offset(x: -width * 0.33, y: -height * 0.31)
     }
   }
-  
+
+  // disabling linter because this will be refactored
+  // swiftlint:disable:next function_body_length
   private func equationsMockup() -> some View {
     Group {
       Rectangle()
         .fill(equationRowColor)
         .frame(width: width * 0.4, height: width * 0.1)
         .offset(x: isDrifted ? -width * 0.15 : -width * 0.1, y: height * 0.04)
-      
+
       Rectangle()
         .fill(Color.unanswered)
         .frame(width: width * 0.15, height: width * 0.1)
         .offset(x: isDrifted ? width * 0.17 : width * 0.22, y: height * 0.04)
-      
+
       Rectangle()
         .fill(equationRowColor)
         .frame(width: width * 0.4, height: width * 0.1)
         .offset(x: isDrifted ? -width * 0.05 : -width * 0.1, y: -height * 0.03)
-      
+
       Rectangle()
         .fill(Color.unanswered)
         .frame(width: width * 0.15, height: width * 0.1)
         .offset(x: isDrifted ? width * 0.27 : width * 0.22, y: -height * 0.03)
-      
+
       Rectangle()
         .fill(equationRowColor)
         .frame(width: width * 0.4, height: width * 0.1)
         .offset(x: isDrifted ? -width * 0.15 : -width * 0.1, y: -height * 0.10)
-      
+
       Rectangle()
         .fill(Color.currentAnswer)
         .frame(width: width * 0.15, height: width * 0.1)
         .offset(x: isDrifted ? width * 0.17 : width * 0.22, y: -height * 0.10)
-      
+
       Rectangle()
         .fill(equationRowColor)
         .frame(width: width * 0.4, height: width * 0.1)
         .offset(x: isDrifted ? -width * 0.05 : -width * 0.1, y: -height * 0.17)
-      
+
       Rectangle()
         .fill(Color.correctAnswer)
         .frame(width: width * 0.15, height: width * 0.1)
         .offset(x: isDrifted ? width * 0.27 : width * 0.22, y: -height * 0.17)
-      
+
       Rectangle()
         .fill(equationRowColor)
         .frame(width: width * 0.4, height: width * 0.1)
         .offset(x: isDrifted ? -width * 0.15 :  -width * 0.1, y: -height * 0.24)
-      
+
       Rectangle()
         .fill(Color.correctAnswer)
         .frame(width: width * 0.15, height: width * 0.1)
@@ -138,13 +140,13 @@ private struct IPhoneView: View {
   let width: CGFloat
   let height: CGFloat
   var screenColor: Color
-  
+
   init(width: CGFloat, height: CGFloat, screenColor: Color) {
     self.width = width
     self.height = height
     self.screenColor = screenColor
   }
-  
+
   var body: some View {
     ZStack {
       // bazel

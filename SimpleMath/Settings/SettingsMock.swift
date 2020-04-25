@@ -8,10 +8,9 @@ final class SettingsMock: Settings {
   var updatedBundle: SettingsBundle?
   var currentSettings: AnyPublisher<SettingsBundle, Never> = Empty<SettingsBundle, Never>()
     .eraseToAnyPublisher()
-  
+
   func updateSettings(bundle: SettingsBundle) {
     self.updatedBundle = bundle
   }
-  
-  
+
 }

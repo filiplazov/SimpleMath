@@ -6,7 +6,7 @@ import SwiftUI
 
 struct EquationTypeSettingView: View {
   @EnvironmentObject private var viewModel: SettingsViewModel
-  
+
   var body: some View {
     VStack(alignment: .center, spacing: 16) {
       EquationTypeRow(
@@ -45,7 +45,7 @@ private struct EquationTypeRow: View {
   var isEnabled: Bool
   var enable: () -> Void
   var disable: () -> Void
-  
+
   var body: some View {
     HStack {
       Image(withSymbol: isEnabled ? .checkmarkFilled : .checkmark)

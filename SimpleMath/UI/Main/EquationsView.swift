@@ -5,13 +5,13 @@
 import SwiftUI
 
 struct EquationsView: View {
-  @State private var equationSize: CGSize = CGSize(width: 20,height: 20)
+  @State private var equationSize: CGSize = CGSize(width: 20, height: 20)
   @Environment(\.horizontalSizeClass) private var hSizeClass
   @EnvironmentObject private var viewModel: SimpleMathViewModel
   let maxWidth: CGFloat
-  
+
   var body: some View {
-    ZStack() {
+    ZStack {
       // fake invisible maximum character equation for measuring: operand + operand = answer
       HStack {
         Text(verbatim: .emptySpace(6) + .emptySpace(self.viewModel.operandDigitCount * 2))
@@ -27,7 +27,7 @@ struct EquationsView: View {
       )
         .background(GeometryReader { Color.clear.preference(key: SizeKey.self, value: $0.size) })
         .onPreferenceChange(SizeKey.self) { self.equationSize = $0 }
-      
+
       ForEach(0..<viewModel.equations.count, id: \.self) { index in
         EquationRowView(
           equation: self.viewModel.equations[index],
@@ -38,7 +38,7 @@ struct EquationsView: View {
           .frame(width: self.equationSize.width, height: self.equationSize.height, alignment: .trailing)
           .offset(x: 0, y: self.verticalOffset(forIndex: index))
       }
-      
+
     }
     .frame(height: equationSize.height * 5 + spacing * 3)
     .font(.equationFont(
@@ -48,7 +48,7 @@ struct EquationsView: View {
       answerLength: self.viewModel.answerDigitCount)
     )
   }
-  
+
   private func verticalOffset(forIndex index: Int) -> CGFloat {
     if index == viewModel.currentEquationIndex {
       return 0
@@ -56,7 +56,7 @@ struct EquationsView: View {
       return CGFloat(CGFloat((index - viewModel.currentEquationIndex)) * (equationSize.height + spacing))
     }
   }
-  
+
   private func opacity(forIndex index: Int) -> Double {
     let distance = abs(index - viewModel.currentEquationIndex)
     switch distance {
@@ -66,15 +66,15 @@ struct EquationsView: View {
     default: return 0
     }
   }
-  
+
   private var spacing: CGFloat {
     hSizeClass == .regular ? 20 : 12
   }
-  
+
   private var padding: CGFloat {
     hSizeClass == .regular ? 130 : 40
   }
-  
+
   private var answerSlotWidth: CGFloat {
     switch viewModel.answerDigitCount {
     case 2: return hSizeClass.isRegular ? iPadSlotSize : 86
@@ -83,7 +83,7 @@ struct EquationsView: View {
     default: return hSizeClass.isRegular ? iPadSlotSize : 100
     }
   }
-  
+
   private var iPadSlotSize: CGFloat {
     switch viewModel.answerDigitCount {
     case 2: return CGFloat.screenWidth >= 1024 ? 160 : 130
@@ -95,7 +95,12 @@ struct EquationsView: View {
 }
 
 private extension Font {
-  static func equationFont(for maxWidth: CGFloat, horizontalSizeClass: UserInterfaceSizeClass?, operandLength: Int, answerLength: Int) -> Font {
+  static func equationFont(
+    for maxWidth: CGFloat,
+    horizontalSizeClass: UserInterfaceSizeClass?,
+    operandLength: Int,
+    answerLength: Int
+  ) -> Font {
     let scale: CGFloat
     if horizontalSizeClass == .regular {
       if operandLength == 2 && answerLength == 4 {
@@ -103,7 +108,7 @@ private extension Font {
       } else {
         scale = 0.085
       }
-      
+
     } else {
       if operandLength == 1 && (answerLength == 2 || answerLength == 1) {
         scale = 0.10
@@ -119,13 +124,12 @@ private extension Font {
   }
 }
 
-
 private struct EquationRowView: View {
   let equation: Equation
   let isCurrentEquation: Bool
   let answerSlotWidth: CGFloat
   let opacity: Double
-  
+
   var body: some View {
     HStack(spacing: 0) {
       Text(equation.question)
@@ -137,7 +141,7 @@ private struct EquationRowView: View {
     }
     .foregroundColor(Color.primaryText.opacity(opacity))
   }
-  
+
   private var evaluationColor: Color {
     if equation.finishedAnswering {
       return equation.correctlyAnswered ? .correctAnswer : .incorrectAnswer

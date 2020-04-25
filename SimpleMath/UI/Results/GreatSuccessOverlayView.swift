@@ -10,7 +10,7 @@ struct GreatSuccessOverlayView: View {
   @State private var angle: Double = 0
   private var axisOffset: CGFloat { hSizeClass.isRegular ? 240 : 120 }
   private var diagonalOffset: CGFloat { hSizeClass.isRegular ? 180 : 90 }
-  
+
   var body: some View {
     ZStack {
       Text("🤩")
@@ -39,7 +39,7 @@ private struct StarView: View {
   let yOffset: CGFloat
   let scale: CGFloat
   let angle: Double
-  
+
   var body: some View {
     Image(withSymbol: .star)
       .font(Font.system(size: hSizeClass.isRegular ? 100 : 50, weight: .bold, design: .default))

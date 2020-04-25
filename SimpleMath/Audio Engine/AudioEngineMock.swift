@@ -4,7 +4,7 @@
 
 final class AudioEngineMock: AudioEngine {
   var playedSounds: [Sound] = []
-  
+
   func play(sound: Sound) {
     playedSounds.append(sound)
   }

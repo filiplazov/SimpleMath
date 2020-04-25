@@ -6,7 +6,7 @@
 import XCTest
 
 class StoredSettingsTests: XCTestCase {
-  
+
   func testInit_loadsInitialBundleFromStorageAndPublishesIt() {
     let storageMock = StorageMock(settingsBundle: .bundleSample1)
     let storedSettings = StoredSettings(withStorage: storageMock)
@@ -17,7 +17,7 @@ class StoredSettingsTests: XCTestCase {
     XCTAssertEqual(receivedValues.count, 1, "Expected only a single value published by the `currentSettings` publisher")
     XCTAssertEqual(expectedValue, receivedValues.first, "`bundleSample1` value loaded from storage should be published")
   }
-  
+
   func testUpdateSettings_ifNewSettingsAreDefferentFromCurrent_storesTheBundleAndPublishesTheNewlyUpdatedBundle() {
     let storageMock = StorageMock(settingsBundle: .bundleSample1)
     let storedSettings = StoredSettings(withStorage: storageMock)
@@ -30,7 +30,7 @@ class StoredSettingsTests: XCTestCase {
     XCTAssertEqual(expectedValues, receivedValues, "Expected published values `.bundleSample1` and `.bundleSample2`")
     XCTAssertEqual(storageMock.settingsBundle, .bundleSample2, "The new bundle `.bundleSample2` should be stored in storage")
   }
-  
+
   func testUpdateSettings_ifNewSettingsAreSameAsCurrent_DoesNotStoreTheBundleAndDoesNotPublishesTheNewlyUpdatedBundle() {
     let storageMock = StorageMock(settingsBundle: .bundleSample1)
     let storedSettings = StoredSettings(withStorage: storageMock)
@@ -43,7 +43,7 @@ class StoredSettingsTests: XCTestCase {
     XCTAssertEqual(expectedValues, receivedValues, "Expected published value is only `.bundleSample1`")
     XCTAssertEqual(storageMock.settingsBundle, .bundleSample1, "The storage should still have the same `.bundleSample1`")
   }
-  
+
 }
 
 private extension SettingsBundle {
@@ -54,7 +54,7 @@ private extension SettingsBundle {
     equationTypes: [.addition, .multiplication],
     areSoundsEnabled: false
   )
-  
+
   static let bundleSample2 = SettingsBundle(
     minimumDigit: 1,
     maximumDigit: 30,

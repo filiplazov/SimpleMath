@@ -7,7 +7,7 @@ import SwiftUI
 struct DigitRangeSettingSectionView: View {
   @EnvironmentObject private var viewModel: SettingsViewModel
   @Environment(\.horizontalSizeClass) private var hSizeClass
-  
+
   var body: some View {
     VStack(spacing: 8) {
       HStack {
@@ -37,14 +37,14 @@ struct DigitRangeSettingSectionView: View {
         )
           .modifier(DigitTextField(isValid: viewModel.isRangeValid))
       }
-      
+
       HStack {
         Text("X + X = ")
         Text("  ")
           .frame(width: hSizeClass.isRegular ? 54 : 40)
           .background(Color.unanswered)
           .clipShape(Capsule())
-        
+
       }
       .font(.system(size: hSizeClass.isRegular ? 24 :  16, weight: .bold, design: .monospaced))
       .opacity(0.6)
@@ -58,7 +58,7 @@ struct DigitRangeSettingSectionView: View {
 private struct DigitTextField: ViewModifier {
   @Environment(\.horizontalSizeClass) private var hSizeClass
   var isValid: Bool
-  
+
   func body(content: Content) -> some View {
     content
       .multilineTextAlignment(.center)
@@ -71,5 +71,5 @@ private struct DigitTextField: ViewModifier {
           .foregroundColor(isValid ? .settingTextFieldBorder : .settingTextFieldBorderInvalid)
     )
   }
-  
+
 }

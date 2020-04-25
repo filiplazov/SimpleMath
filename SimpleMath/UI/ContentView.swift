@@ -14,21 +14,21 @@ struct ContentView: View {
   @Environment(\.horizontalSizeClass) private var hSizeClass
   private var additionalTopPadding: CGFloat { CGFloat.screenHeight >= 736 ? 20 : 0 }
   private var progressWidth: CGFloat { (hSizeClass.isRegular ? 80 : 40) * (showSettings ? 1.5 : 1) }
-  
+
   var body: some View {
     ZStack {
       Color.background
         .edgesIgnoringSafeArea(.all)
-      
+
       // measuring the safe area screen
       GeometryReader { proxy in
         ZStack {
           VStack(spacing: 0) {
             Spacer()
-      
+
             EquationsView(maxWidth: proxy.size.width)
               .padding(.bottom, self.hSizeClass.isRegular ? 130 : proxy.size.height * 0.07)
-            
+
             // input area takes lower 40% of the screen (within safe area)
             InputView(maxWidth: proxy.size.width)
               .frame(width: proxy.size.width, height: proxy.size.height * 0.4)
@@ -50,14 +50,14 @@ struct ContentView: View {
           }
           .padding(.top, self.hSizeClass == .regular ? 24 : 10 + self.additionalTopPadding)
           .padding(.horizontal)
-          
+
           CorrectAnswersView(correctAnswers: self.viewModel.correctAnswers)
             .padding(.top, self.hSizeClass == .regular ? 14 : 6 + self.additionalTopPadding)
             .padding(.horizontal)
             .blur(radius: self.showSettings ? 20 : 0)
         }
       }
-      
+
       SettingsPanelView(show: $showSettings)
     }
     .onReceive(viewModel.$finished) { self.resultsSheet.isPresented = $0 }
@@ -80,28 +80,28 @@ struct ContentView_Previews: PreviewProvider {
     settings.currentSettings = .just(bundle)
     return settings
   }()
-  
+
   static let factoryMock = EquationsFactoryMock {
     let onePlusOne = Equation(left: 1, right: 1, operator: .add, answerDigitLimit: 1)
-    let equations: [Equation] = (1...5).map{_ in onePlusOne }
+    let equations: [Equation] = (1...5).map {_ in onePlusOne }
     return GeneratedResult(
-      equations: (1...5).map{_ in onePlusOne },
+      equations: (1...5).map {_ in onePlusOne },
       maxOperandDigits: 1,
       maxAnswerDigits: 1
     )
   }
-  
+
   static let finishedViewModel: SimpleMathViewModel = {
-    let vm = SimpleMathViewModel(settings: settingsMock)
-    for _ in vm.equations {
-      vm.input(number: 1)
-      vm.evaluate()
+    let viewModel = SimpleMathViewModel(settings: settingsMock)
+    for _ in viewModel.equations {
+      viewModel.input(number: 1)
+      viewModel.evaluate()
     }
-    return vm
+    return viewModel
   }()
-  
+
   static let onboarding = Onboarding(withStorage: storageMock)
-  
+
   static var previews: some View {
     Group {
 //      ContentView()
@@ -114,14 +114,14 @@ struct ContentView_Previews: PreviewProvider {
 //        .environmentObject(SimpleMathViewModel(settings: Self.settingsMock))
 //        .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
 //        .previewDisplayName("iPhone SE")
-      
+
       ContentView()
         .environmentObject(SimpleMathViewModel(settings: settingsMock))
         .environmentObject(onboarding)
         .environmentObject(SettingsViewModel(settings: settingsMock))
         .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         .previewDisplayName("iPhone 8")
-      
+
 //      ContentView()
 //        .environmentObject(SimpleMathViewModel(settings: Self.settingsMock))
 //        .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
@@ -133,13 +133,3 @@ struct ContentView_Previews: PreviewProvider {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-

@@ -7,7 +7,7 @@ import SwiftUI
 struct NumbersInputView: View {
   let spacing: CGFloat
   let action: (Int) -> Void
-  
+
   var body: some View {
     VStack {
       HStack(spacing: self.spacing) {
@@ -28,7 +28,7 @@ struct NumbersInputView: View {
       HStack(spacing: self.spacing) {
         Button("0") { self.action(0) }
       }
-      
+
     }
     .foregroundColor(.primaryText)
   }

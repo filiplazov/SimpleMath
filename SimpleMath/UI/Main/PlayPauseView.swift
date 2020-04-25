@@ -9,7 +9,6 @@ struct PlayPauseView: View {
   private let longerSize: CGFloat
   var play: Bool
   let width: CGFloat
-  
 
   init(play: Bool, width: CGFloat) {
     self.play = play
@@ -17,8 +16,7 @@ struct PlayPauseView: View {
     shorterSize = width * 0.2
     longerSize = width * 0.8
   }
-  
-  
+
   var body: some View {
     ZStack {
       Tetragon(p1: CGPoint(x: play ? 1 : 0, y: 0), animateOn: \.p1.x)
@@ -30,7 +28,7 @@ struct PlayPauseView: View {
         .frame(width: shorterSize, height: longerSize)
         .scaleEffect(CGSize(width: play ? 2 : 1, height: 1))
         .offset(x: shorterSize, y: 0)
-        
+
     }
     .frame(width: width, height: width)
     .rotationEffect(.degrees( play ? 90 : 0))
@@ -45,12 +43,13 @@ struct PlayPauseView_Previews: PreviewProvider {
   }
 }
 
-struct Tetragon : Shape {
+// swiftlint:disable identifier_name
+struct Tetragon: Shape {
   typealias AnimatableData = CGFloat
-  
+
   var p0, p1, p2, p3: CGPoint
   var animateOn: WritableKeyPath<Tetragon, CGFloat>
-  
+
   internal init(
     p0: CGPoint = .init(x: 0, y: 1),
     p1: CGPoint = .init(x: 0, y: 0),
@@ -63,19 +62,20 @@ struct Tetragon : Shape {
     self.p3 = p3
     self.animateOn = animateOn
   }
-  
+
   var animatableData: CGFloat {
     get { self[keyPath: animateOn] }
     set { self[keyPath: animateOn] = newValue }
   }
-  
+
   func path(in rect: CGRect) -> Path {
-    Path { p in
-      p.move(to: CGPoint(x: p0.x * rect.size.width, y: p0.y * rect.size.height))
-      p.addLine(to: CGPoint(x: p1.x * rect.size.width, y: p1.y * rect.size.height))
-      p.addLine(to: CGPoint(x: p2.x * rect.size.width, y: p2.y * rect.size.height))
-      p.addLine(to: CGPoint(x: p3.x * rect.size.width, y: p3.y * rect.size.height))
-      p.addLine(to: CGPoint(x: p0.x * rect.size.width, y: p0.y * rect.size.height))
+    Path { path in
+      path.move(to: CGPoint(x: p0.x * rect.size.width, y: p0.y * rect.size.height))
+      path.addLine(to: CGPoint(x: p1.x * rect.size.width, y: p1.y * rect.size.height))
+      path.addLine(to: CGPoint(x: p2.x * rect.size.width, y: p2.y * rect.size.height))
+      path.addLine(to: CGPoint(x: p3.x * rect.size.width, y: p3.y * rect.size.height))
+      path.addLine(to: CGPoint(x: p0.x * rect.size.width, y: p0.y * rect.size.height))
     }
   }
 }
+// swiftlint:enable identifier_name

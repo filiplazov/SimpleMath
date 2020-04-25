@@ -6,9 +6,9 @@ import SwiftUI
 
 struct ResultRowView: View {
   let equation: Equation
-  
+
   var body: some View {
-    HStack() {
+    HStack {
       Text(equation.question)
         .foregroundColor(.primaryText)
       Text(equation.currentAnswerText)

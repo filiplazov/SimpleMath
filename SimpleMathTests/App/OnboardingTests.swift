@@ -14,7 +14,7 @@ class OnboardingTests: XCTestCase {
       onboarding.showSettingsHint,
       "`showSettingsHint` should be false because `seenSettingsHint` is set to true"
     )
-    
+
     storageMock = StorageMock(onboardingBundle: OnboardingBundle(seenSettingsHint: false))
     onboarding = Onboarding(withStorage: storageMock)
     XCTAssertTrue(
@@ -22,7 +22,7 @@ class OnboardingTests: XCTestCase {
       "`showSettingsHint` should be true because `seenSettingsHint` is set to false"
     )
   }
-  
+
   func testDiscardSettingsHint_setsShowSettingsHintToFalseAndUpdatesStorage() {
     let storageMock = StorageMock(onboardingBundle: OnboardingBundle(seenSettingsHint: false))
     let onboarding = Onboarding(withStorage: storageMock)
@@ -37,11 +37,11 @@ class OnboardingTests: XCTestCase {
       "the storage should be updated with the changed onboarding bundle where seenSettingsHint is true"
     )
   }
-  
+
   func testDiscardSettingsHint_doesNothingIfShowSettingsHintWasFalse() {
     let storageMock = StorageMock(onboardingBundle: OnboardingBundle(seenSettingsHint: true))
     let onboarding = Onboarding(withStorage: storageMock)
-    
+
     XCTAssertFalse(
       onboarding.showSettingsHint,
       "showSettingsHint should still be false after discardSettingsHint is called"

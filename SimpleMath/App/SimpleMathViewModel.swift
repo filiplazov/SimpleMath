@@ -23,13 +23,17 @@ final class SimpleMathViewModel: ObservableObject {
   @Published private(set) var greatSuccess = false
   var wrongAnswers: Int { equations.count - correctAnswers }
 
-  init(settings: Settings, audioPlayer: AudioEngine = AudioPlayer(), equationsFactory: EquationsFactory = EquationsFactoryImp()) {
+  init(
+    settings: Settings,
+    audioPlayer: AudioEngine = AudioPlayer(),
+    equationsFactory: EquationsFactory = EquationsFactoryImp()
+  ) {
     self.settings = settings
     self.audioEngine = audioPlayer
     self.equationsFactory = equationsFactory
     setupSubscriptions()
   }
-  
+
   private func setupSubscriptions() {
     settings?.currentSettings
       .map(\.areSoundsEnabled)
@@ -40,7 +44,7 @@ final class SimpleMathViewModel: ObservableObject {
       .removeDuplicates()
       .sink(receiveValue: makeNewEquations(withEquationSettings:))
       .store(in: &subscriptions)
-      
+
     $equations
       .filter { !$0.isEmpty }
       .map { $0.allSatisfy { $0.finishedAnswering } }
@@ -67,15 +71,15 @@ final class SimpleMathViewModel: ObservableObject {
       .assign(to: \.greatSuccess, on: self)
       .store(in: &subscriptions)
   }
-  
+
   func input(number: Int) {
     equations[currentEquationIndex].append(digit: number)
   }
-  
+
   func erase() {
     equations[currentEquationIndex].erase()
   }
-  
+
   func evaluate() {
     equations[currentEquationIndex].evaluate()
     if areSoundsEnabled {
@@ -91,12 +95,12 @@ final class SimpleMathViewModel: ObservableObject {
       currentEquationIndex += 1
     }
   }
-  
+
   func reset() {
     guard let equationSettings = self.equationSettings else { return }
     makeNewEquations(withEquationSettings: equationSettings)
   }
-  
+
   private func makeNewEquations(withEquationSettings equationSettings: EquationSettings) {
     self.equationSettings = equationSettings
     currentEquationIndex = 0
@@ -106,10 +110,3 @@ final class SimpleMathViewModel: ObservableObject {
     answerDigitCount = result.maxAnswerDigits
   }
 }
-
-
-
-
-
-
-

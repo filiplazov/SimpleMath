@@ -32,7 +32,7 @@ class SimpleMathViewModelTests: XCTestCase {
       audioPlayer: AudioEngineMock(),
       equationsFactory: factoryMock
     )
-    
+
     XCTAssertEqual(viewModel.equations, expectedEquations,
                    "created equations should be the expected ones from the equation factory generated result")
     XCTAssertEqual(viewModel.currentEquationIndex, 0, "index always starts at 0")
@@ -43,7 +43,7 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertEqual(factoryMock.equationSettings, expectedEquationSettings,
                    "the factory should use the settings it was called with to generate the equations")
   }
-  
+
   func testInputNumber_correctlyAddsDigitOnCurrentEquation() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -64,7 +64,7 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertEqual(viewModel.equations[1].currentAnswerText, "", "expected no answer")
     XCTAssertEqual(viewModel.equations[2].currentAnswerText, "", "expected no answer")
   }
-  
+
   func testErase_correctlyRemovesDigitFromCurrentEquation() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -87,7 +87,7 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertEqual(viewModel.equations[1].currentAnswerText, "", "expected no answer")
     XCTAssertEqual(viewModel.equations[2].currentAnswerText, "", "expected no answer")
   }
-  
+
   func testEvaluate_soundsEnabled_correctlyEvaluatesEquationAndPlaysSoundBasedOnEvaluation() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -127,7 +127,7 @@ class SimpleMathViewModelTests: XCTestCase {
       "expected sounds played are `success` after first equation evaluated correctly, `faulure` after second incorrectly"
     )
   }
-  
+
   func testEvaluate_soundsEnabled_correctlyEvaluatesAllEquations() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -164,7 +164,7 @@ class SimpleMathViewModelTests: XCTestCase {
       "expected sounds played are `success` for the first two correcrly evaluated equations, and `greatSuccess` at the end"
     )
   }
-  
+
   func testEvaluate_soundsEnabled_incorrectlyEvaluatesAllEquations() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -200,7 +200,7 @@ class SimpleMathViewModelTests: XCTestCase {
       audioEngineMock.playedSounds, [.failure, .failure, .failure],
       "expected sounds played are `failure` for all equations since all evaluated incorrectly")
   }
-  
+
   func testEvaluate_soundsDisabled_correctlyEvaluatesAllEquationsButNoSoundsPlayed() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -224,7 +224,7 @@ class SimpleMathViewModelTests: XCTestCase {
     viewModel.evaluate()
     XCTAssertTrue(audioEngineMock.playedSounds.isEmpty, "when sounds are disabled no sounds should be played")
   }
-  
+
   func testReset_reCreatesEquationsSetsIndexToZeroAndResetsOtherParameters() {
     let equations: [Equation] = [ .onePlusOne, .onePlusOne, .onePlusOne]
     let factoryMock = EquationsFactoryMock {
@@ -256,9 +256,9 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertTrue(viewModel.equations[1].finishedAnswering, "second equation should have finished answering true")
     XCTAssertEqual(viewModel.equations[2].currentAnswerText, "2", "expected current answer to be 2")
     XCTAssertTrue(viewModel.equations[2].finishedAnswering, "third equation should have finished answering true")
-    
+
     viewModel.reset()
-    
+
     XCTAssertEqual(viewModel.equations[0].currentAnswerText, "", "expected no answer")
     XCTAssertFalse(viewModel.equations[0].finishedAnswering, "first equation should have finished answering false after reset")
     XCTAssertEqual(viewModel.equations[1].currentAnswerText, "", "expected no answer")
@@ -272,7 +272,7 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertFalse(viewModel.finished, "finished should be false after a reset")
     XCTAssertFalse(viewModel.greatSuccess, "great seccess should be after a reset")
   }
-  
+
   func testSettings_newSettingsPublishedThatChangeEquationSettingsWillResetCurrentEquations() {
     let settingsPublisher = CurrentValueSubject<SettingsBundle, Never>(.default)
     let settingsMock = SettingsMock()
@@ -293,9 +293,9 @@ class SimpleMathViewModelTests: XCTestCase {
     XCTAssertTrue(viewModel.equations[1].finishedAnswering, "second equation should have finished answering true")
     XCTAssertEqual(viewModel.equations[2].currentAnswerText, "", "expected no answer")
     XCTAssertFalse(viewModel.equations[2].finishedAnswering, "third equation should have finished answering false")
-    
+
     settingsPublisher.value = SettingsBundle.default.set(\.equationsCount, to: 5)
-    
+
     XCTAssertEqual(viewModel.equations.count, 5, "new settings bundle has equations count set to 10")
     XCTAssertEqual(viewModel.equations[0].currentAnswerText, "", "expected no answer")
     XCTAssertFalse(viewModel.equations[0].finishedAnswering, "first equation should have finished answering false after reset")
