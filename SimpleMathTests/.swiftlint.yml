@@ -1,7 +1,7 @@
 # There are some rules that we would like to disable for UNIT tests
 opt_in_rules:
   - line_length
-line_length: 140
+# line_length: 140
 disabled_rules:
   - function_body_length  # we do not care about the function bodies spanning across too many lines
   - type_body_length      # we do not care about the number of lines in the body
