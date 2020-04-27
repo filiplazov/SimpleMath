@@ -1,5 +1,7 @@
 # Simple Math app
 
+[![Build Status](https://app.bitrise.io/app/bdde9ef31505ea1c/status.svg?token=Hm5PXHsL4uQeV_oGsKFtuA&branch=master)](https://app.bitrise.io/app/bdde9ef31505ea1c)
+
 SimpleMath is an app that generates simple math equations for young children to help them solve and learn in a fun way. I've made this app for my 6 year old daughter because I don't have to write or print the equations and I don't need to evaluate them as well, the app does it all. 
 I am very happy I can make my daughter's learning process easier, but this project has also given me a great "toy" to play around and learn / practice SwiftUI & Combine.
 It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.youtube.com/watch?v=FE4ys3tW1VI), I highly recommend it.
@@ -15,7 +17,7 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 - [x] Settings UI that allows customization of:
     - [x] Operand digit input range.
     - [x] Number of generated equations (minimum 5, maximum 30).
-    - [x] Endable / disable equation types: addition, subtraction, multiplication, division.
+    - [x] Enable / disable equation types: addition, subtraction, multiplication, division.
     - [x] Toggle sounds.
 - [x] Scaling fonts and UI for all supported iOS13+ devices.
 
