@@ -27,8 +27,6 @@ It is heavily inspired by Paul Hudson's recent [SwiftUI Live video](https://www.
 
 ## Todo
 
-- [ ] Add CI support.
-- [ ] Add Swiftlint support.
 - [ ] Add light / dark mode support.
 - [ ] Customize colors / themes (it is very purple now, my target audience demanded it!).
 - [ ] Support landscape layout.
