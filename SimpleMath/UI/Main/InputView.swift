@@ -19,7 +19,7 @@ struct InputView: View {
       )
         .font(.commandFont(for: maxWidth, horizontalSizeClass: hSizeClass))
         .padding(.horizontal, hSizeClass.isRegular ? 60 : 0)
-      NumbersInputView(spacing: hSizeClass == .regular ? 100 : 48, action: viewModel.input(number:))
+      NumbersInputView(spacing: hSizeClass == .regular ? 80 : 48, action: viewModel.input(number:))
         .font(.numbersFont(for: maxWidth, horizontalSizeClass: hSizeClass))
       CommandInputButton(
         symbol: .checkmark,
