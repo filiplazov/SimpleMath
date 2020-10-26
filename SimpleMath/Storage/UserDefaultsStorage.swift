@@ -5,7 +5,7 @@
 import Foundation
 
 final class UserDefaultsStorage: Storage {
-  private var storedDataCache: StoredData?
+  
   let modelVersion: String
   let key: String
 
@@ -14,54 +14,75 @@ final class UserDefaultsStorage: Storage {
     self.modelVersion = modelVersion
   }
 
+  // Saving Settings bundle store, from cache.
   func store(settingsBundle: SettingsBundle) {
-    var data = storedData
+    var data = storedMigrationData
     data.settingsBundle = settingsBundle
     save(storedData: data)
   }
 
+  // Loading of the settings bundle
   func loadSettingsBundle() -> SettingsBundle {
-    storedData.settingsBundle
+    storedMigrationData.settingsBundle
   }
 
+  // Save onboarding bundle
   func store(onboardingBundle: OnboardingBundle) {
-    var data = storedData
+    var data = storedMigrationData
     data.onboardingBundle = onboardingBundle
     save(storedData: data)
   }
 
+  // Loading onboarding bundle
   func loadOnboardingBundle() -> OnboardingBundle {
-    storedData.onboardingBundle
+    storedMigrationData.onboardingBundle
   }
   
-  #warning("Documentation needs work.")
-  #warning("Who is calling `storedData`? Why is it private?")
-  /// What data?
-  /// - The cache, if available.
-  /// - If the cache is not available, try from UserDefaults
-  /// - If UserDefaults doesn't have any data, then return `defaultStoreData`
+  private var storedDataCache: MigrationData?
+}
+
+// the model version is stored if migrations are needed in the future
+#warning("Can we inline this into UserDefaultsStorage or get rid of it entirely?")
+private struct MigrationData: Codable {
+  var modelVersion: String
+  var settingsBundle: SettingsBundle
+  var onboardingBundle: OnboardingBundle
+}
+
+extension UserDefaultsStorage {
+  
+  /// Previously stored migration data.
   ///
-  /// - Returns: a Store Data object?
-  private var storedData: StoredData {
+  /// - From the cache, if available. The cache has the same lifetime as the session.
+  /// - If the cache is not available, try from UserDefaults, save to the cache.
+  /// - If UserDefaults doesn't have any data, then return `defaultStoreData` and save to UserDefaults.
+  ///
+  /// - Returns: a struct describing model version, settings bundle and onboarding bundle.
+  private var storedMigrationData: MigrationData {
     
     // Do we have a cache?
     guard let cache = storedDataCache else {
       
+      let defaultMigrationData = MigrationData(modelVersion: modelVersion,
+                                               settingsBundle: .default,
+                                               onboardingBundle: .default)
+      
       // We do not. Do we have the previous data in UserDefaults?
       guard let savedJSONData = UserDefaults.standard.value(forKey: key) as? Data else {
         // We don't have previous data.
-        // Generate it.
         print("No data found for key \(key), generating default values")
-        storedDataCache = defaultStoreData
-        #warning("We should save this to UserDefaults.")
+        storedDataCache = defaultMigrationData
+        save(storedData: storedDataCache!)
         return storedDataCache!
       }
       
       // We do have the previous data in UserDefaults.
       // Transform it into a JSON.
-      var storedData = defaultStoreData
+      //
+      // `storedData` should be a variable because we're using it as fallback.
+      var storedData = defaultMigrationData
       do {
-        storedData = try JSONDecoder().decode(StoredData.self, from: savedJSONData)
+        storedData = try JSONDecoder().decode(MigrationData.self, from: savedJSONData)
       } catch {
         print("error reading stored data \(error), generating default values")
       }
@@ -73,31 +94,13 @@ final class UserDefaultsStorage: Storage {
     return cache
   }
   
-  private var defaultStoreData: StoredData {
-    var storedData = StoredData.useDefault
-    storedData.modelVersion = modelVersion
-    return storedData
-  }
-  
-  private func save(storedData: StoredData) {
+  #warning("Can we make this function throw?")
+  private func save(storedData: MigrationData) {
     storedDataCache = storedData
     do {
       try UserDefaults.standard.set(JSONEncoder().encode(storedData), forKey: key)
     } catch {
       print("failed saving data :", error)
     }
-  }
-}
-
-// the model version is stored if migrations are needed in the future
-private struct StoredData: Codable {
-  var modelVersion: String
-  var settingsBundle: SettingsBundle
-  var onboardingBundle: OnboardingBundle
-}
-
-extension StoredData {
-  static var useDefault: StoredData {
-    StoredData(modelVersion: "", settingsBundle: .default, onboardingBundle: .default)
   }
 }
