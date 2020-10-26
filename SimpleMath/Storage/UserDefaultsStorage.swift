@@ -15,49 +15,70 @@ final class UserDefaultsStorage: Storage {
   }
 
   func store(settingsBundle: SettingsBundle) {
-    var data = loadStoredData()
+    var data = storedData
     data.settingsBundle = settingsBundle
     save(storedData: data)
-
   }
 
   func loadSettingsBundle() -> SettingsBundle {
-    loadStoredData().settingsBundle
+    storedData.settingsBundle
   }
 
   func store(onboardingBundle: OnboardingBundle) {
-    var data = loadStoredData()
+    var data = storedData
     data.onboardingBundle = onboardingBundle
     save(storedData: data)
   }
 
   func loadOnboardingBundle() -> OnboardingBundle {
-    loadStoredData().onboardingBundle
+    storedData.onboardingBundle
   }
-
-  private func loadStoredData() -> StoredData {
-    if let cache = storedDataCache {
-      return cache
-    } else {
-      var storedData: StoredData
+  
+  #warning("Documentation needs work.")
+  #warning("Who is calling `storedData`? Why is it private?")
+  /// What data?
+  /// - The cache, if available.
+  /// - If the cache is not available, try from UserDefaults
+  /// - If UserDefaults doesn't have any data, then return `defaultStoreData`
+  ///
+  /// - Returns: a Store Data object?
+  private var storedData: StoredData {
+    
+    // Do we have a cache?
+    guard let cache = storedDataCache else {
+      
+      // We do not. Do we have the previous data in UserDefaults?
+      guard let savedJSONData = UserDefaults.standard.value(forKey: key) as? Data else {
+        // We don't have previous data.
+        // Generate it.
+        print("No data found for key \(key), generating default values")
+        storedDataCache = defaultStoreData
+        #warning("We should save this to UserDefaults.")
+        return storedDataCache!
+      }
+      
+      // We do have the previous data in UserDefaults.
+      // Transform it into a JSON.
+      var storedData = defaultStoreData
       do {
-        if let data = UserDefaults.standard.value(forKey: key) as? Data {
-          storedData = try JSONDecoder().decode(StoredData.self, from: data)
-        } else {
-          print("No data found for key \(key), generating default values")
-          storedData = .useDefault
-          storedData.modelVersion = modelVersion
-        }
+        storedData = try JSONDecoder().decode(StoredData.self, from: savedJSONData)
       } catch {
         print("error reading stored data \(error), generating default values")
-        storedData = .useDefault
-        storedData.modelVersion = modelVersion
       }
+      
       storedDataCache = storedData
       return storedData
     }
+    
+    return cache
   }
-
+  
+  private var defaultStoreData: StoredData {
+    var storedData = StoredData.useDefault
+    storedData.modelVersion = modelVersion
+    return storedData
+  }
+  
   private func save(storedData: StoredData) {
     storedDataCache = storedData
     do {
